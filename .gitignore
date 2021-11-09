@@ -10,3 +10,4 @@
 /yarn-error.log
 /plugin/**.d.ts
 /dist/*
+/.npmrc
