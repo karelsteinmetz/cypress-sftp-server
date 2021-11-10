@@ -22,6 +22,7 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
                     },
                     hostKeys: config.hostKeys
                         ? config.hostKeys.map((k) => {
+                              log(config, "Server configured with host key", k.keyPath);
                               return {
                                   key: fs.readFileSync(k.keyPath),
                                   passphrase: k.passphrase,

@@ -1,7 +1,9 @@
 # Changelog
 
-## [0.0.1] - 2020-11-09
+### 0.0.2
 
-### Init
+-    Added host keys into the cypress configuration.
+
+### 0.0.1
 
 -   Initial commit
