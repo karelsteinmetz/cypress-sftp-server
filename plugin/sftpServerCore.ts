@@ -9,6 +9,7 @@ const SftpServer = require("ssh2-sftp-server");
 let server: ssh2.Server;
 
 export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartResult | PromiseLike<ISftpStartResult>> {
+    log(config, "SFTP Server is starting...");
     return new Promise<ISftpStartResult>((f, r) => {
         let host = "";
         let port = config.port || 0;
@@ -36,32 +37,16 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
                           ],
                 },
                 (client: ssh2.Connection, clientInfo: ssh2.ClientInfo) => {
-                    log(config, `New client connecting...`, client, clientInfo);
+                    log(config, `New client connecting...`, clientInfo);
                     client
                         .on("error", (e) => log(config, "error: ", e))
                         .on("authentication", async function (ctx) {
-                            log(config, "Authentication accepting started...", ctx);
+                            log(config, "Authentication accepting started...");
                             log(config, `User ${ctx.username} attempting to authenticate with method= ${ctx.method}`);
-                            let username;
-                            let password;
                             if (ctx.method === "none") {
                                 ctx.accept();
                                 log(config, `Authentication accepted by method ${ctx.method}.`);
                                 return;
-                            }
-                            if (ctx.method === "password") {
-                                username = ctx.username;
-                                password = ctx.password;
-
-                                try {
-                                    await doSomeAuthorization(username, password);
-
-                                    ctx.accept();
-                                } catch (e) {
-                                    console.error(e);
-                                    ctx.reject(["password"]);
-                                    client.end();
-                                }
                             } else {
                                 ctx.reject(["password"]);
                             }
@@ -75,8 +60,9 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
                                 let session = accept();
                                 log(config, "Session accepted.", session);
                                 session.on("sftp", function (accept) {
+                                    log(config, "Session stream accepting started...");
                                     const sftpStream = accept();
-                                    console.log("SftpStream: ", sftpStream);
+                                    log(config, "Session stream accepted.", session);
                                     if (!sftpStream) {
                                         return;
                                     }
@@ -121,22 +107,20 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
 }
 
 export async function sftpStop(config: ISftpStopOptions): Promise<ISftpStopResult> {
-    log(config, "sftpStop", server, SftpServer);
-    return new Promise<ISftpStopResult>((f, _e) => {
-        if (server !== undefined) {
-            server.close();
+    log(config, "SFTP Server is stopping...");
+    return new Promise<ISftpStopResult>((f, _r) => {
+        if (server === undefined) {
+            log(config, "SFTP Server was checked for stop but did not run/created.");
+            f({ status: true });
+            return;
         }
+
+        server.close();
+        log(config, "SFTP Server was stopped.");
         f({ status: true });
     });
 }
 
 function log(config: IDebugSftpOptions, message?: any, ...optionalParams: any[]): void {
     config.debug && console.log(message, ...optionalParams);
-}
-
-function doSomeAuthorization(username: string, password: string): Promise<void> {
-    if (username === "test1" && password === "test1") {
-        return Promise.resolve();
-    }
-    return Promise.reject();
 }

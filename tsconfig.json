@@ -11,7 +11,7 @@
         "target": "es5",
         "lib": ["es5", "dom", "es2015.core", "es2015.promise", "es2015.iterable", "es2015.collection"],
         "types": ["cypress", "node"],
-        "typeRoots": [ "./types", "./node_modules/@types"],
+        "typeRoots": ["./types", "./node_modules/@types"],
         "sourceMap": true,
         "removeComments": false,
     },

@@ -1,8 +1,12 @@
 # Changelog
 
+### 0.0.3
+
+-   Cleaned logs.
+
 ### 0.0.2
 
--    Added host keys into the cypress configuration.
+-   Added host keys into the cypress configuration.
 
 ### 0.0.1
 
