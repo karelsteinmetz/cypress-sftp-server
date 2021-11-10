@@ -3,27 +3,33 @@
 import * as ssh2 from "ssh2";
 import * as path from "path";
 import * as fs from "fs";
+import * as fsLogger from "./fsLogger";
 
 const SftpServer = require("ssh2-sftp-server");
 
 let server: ssh2.Server;
 
 export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartResult | PromiseLike<ISftpStartResult>> {
-    log(config, "SFTP Server is starting...");
+    let serverLogger: fsLogger.IServerLogger | undefined;
+    if (config.serverLogDirPath !== undefined) {
+        serverLogger = fsLogger.createLogger(config.serverLogDirPath);
+    }
+
+    debugLog(config, "SFTP Server is starting...");
     return new Promise<ISftpStartResult>((f, r) => {
         let host = "";
         let port = config.port || 0;
         let family = "";
-
         try {
             server = new ssh2.Server(
                 {
                     debug: (message: string) => {
-                        log(config, message);
+                        debugLog(config, message);
+                        serverLogger?.log(message);
                     },
                     hostKeys: config.hostKeys
                         ? config.hostKeys.map((k) => {
-                              log(config, "Server configured with host key", k.keyPath);
+                              debugLog(config, "Server configured with host key", k.keyPath);
                               return {
                                   key: fs.readFileSync(k.keyPath),
                                   passphrase: k.passphrase,
@@ -37,32 +43,32 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
                           ],
                 },
                 (client: ssh2.Connection, clientInfo: ssh2.ClientInfo) => {
-                    log(config, `New client connecting...`, clientInfo);
+                    debugLog(config, `New client connecting...`, clientInfo);
                     client
-                        .on("error", (e) => log(config, "error: ", e))
+                        .on("error", (e) => debugLog(config, "error: ", e))
                         .on("authentication", async function (ctx) {
-                            log(config, "Authentication accepting started...");
-                            log(config, `User ${ctx.username} attempting to authenticate with method= ${ctx.method}`);
+                            debugLog(config, "Authentication accepting started...");
+                            debugLog(config, `User ${ctx.username} attempting to authenticate with method= ${ctx.method}`);
                             if (ctx.method === "none") {
                                 ctx.accept();
-                                log(config, `Authentication accepted by method ${ctx.method}.`);
+                                debugLog(config, `Authentication accepted by method ${ctx.method}.`);
                                 return;
                             } else {
                                 ctx.reject(["password"]);
                             }
                             ctx.accept();
-                            log(config, "Authentication accepted.");
+                            debugLog(config, "Authentication accepted.");
                         })
                         .on("ready", function () {
-                            log(config, "Client is authenticated!");
+                            debugLog(config, "Client is authenticated!");
                             client.on("session", (accept) => {
-                                log(config, "Session accepting started...");
+                                debugLog(config, "Session accepting started...");
                                 let session = accept();
-                                log(config, "Session accepted.", session);
+                                debugLog(config, "Session accepted.", session);
                                 session.on("sftp", function (accept) {
-                                    log(config, "Session stream accepting started...");
+                                    debugLog(config, "Session stream accepting started...");
                                     const sftpStream = accept();
-                                    log(config, "Session stream accepted.", session);
+                                    debugLog(config, "Session stream accepted.", session);
                                     if (!sftpStream) {
                                         return;
                                     }
@@ -71,7 +77,7 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
                             });
                         })
                         .on("end", function () {
-                            log(config, "Client was disconnected.");
+                            debugLog(config, "Client was disconnected.");
                         });
                 }
             );
@@ -81,7 +87,7 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
                 family = address.family;
                 port = address.port;
                 host = address.address;
-                log(config, "Listening on: " + host + ":" + port, family);
+                debugLog(config, "Listening on: " + host + ":" + port, family);
 
                 f({
                     server: {
@@ -107,20 +113,20 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
 }
 
 export async function sftpStop(config: ISftpStopOptions): Promise<ISftpStopResult> {
-    log(config, "SFTP Server is stopping...");
+    debugLog(config, "SFTP Server is stopping...");
     return new Promise<ISftpStopResult>((f, _r) => {
         if (server === undefined) {
-            log(config, "SFTP Server was checked for stop but did not run/created.");
+            debugLog(config, "SFTP Server was checked for stop but did not run/created.");
             f({ status: true });
             return;
         }
 
         server.close();
-        log(config, "SFTP Server was stopped.");
+        debugLog(config, "SFTP Server was stopped.");
         f({ status: true });
     });
 }
 
-function log(config: IDebugSftpOptions, message?: any, ...optionalParams: any[]): void {
+function debugLog(config: IDebugSftpOptions, message?: any, ...optionalParams: any[]): void {
     config.debug && console.log(message, ...optionalParams);
 }

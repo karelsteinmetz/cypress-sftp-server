@@ -8,7 +8,7 @@ interface ISftpStopCommandOptions extends Partial<Cypress.Loggable & Cypress.Tim
 
 declare namespace Cypress {
     interface ResolvedConfigOptions {
-        sftpServer?: { debugLog?: string; hostKeys?: { keyPath: string; passphrase: string }[] };
+        sftpServer?: { logPath?: string; hostKeys?: { keyPath: string; passphrase: string }[] };
     }
 
     interface Chainable<Subject> {

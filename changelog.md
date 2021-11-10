@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.0.4
+
+-   Created fs server logger.
+
 ### 0.0.3
 
 -   Cleaned logs.

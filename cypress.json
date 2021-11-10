@@ -1,6 +1,6 @@
 {
     "sftpServer": {
-        "debugLog": "sftpServer.txt",
+        "logPath": "cypress/sftp-server-logs",
         "hostKeys": [
             {
                 "keyPath": "sftpServer.ppk",

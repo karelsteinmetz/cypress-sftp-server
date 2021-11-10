@@ -10,3 +10,4 @@ cypress.json
 cypress
 node_modules
 webpack.config.**
+sftpServer.ppk

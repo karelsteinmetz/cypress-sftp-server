@@ -20,7 +20,6 @@ Cypress.Commands.add(
         );
 
         const sftpServerConfig = Cypress.config("sftpServer");
-        const callWithDebug = !!sftpServerConfig?.debugLog;
 
         return cy
             .task(
@@ -28,7 +27,8 @@ Cypress.Commands.add(
                 <ISftpStartOptions>{
                     port: options?.port,
                     hostKeys: sftpServerConfig?.hostKeys,
-                    debug: callWithDebug,
+                    debug: options.debug,
+                    serverLogDirPath: sftpServerConfig?.logPath,
                 },
                 Object.assign(cmdOptions, { log: true })
             )
@@ -53,14 +53,11 @@ Cypress.Commands.add(
             }
         );
 
-        const sftpServerConfig = Cypress.config("sftpServer");
-        const callWithDebug = !!sftpServerConfig?.debugLog;
-
         return cy
             .task(
                 "sftpStop",
                 <ISftpStopOptions>{
-                    debug: callWithDebug,
+                    debug: options.debug,
                 },
                 Object.assign(cmdOptions, { log: true })
             )

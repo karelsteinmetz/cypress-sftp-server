@@ -11,3 +11,4 @@
 /plugin/**.d.ts
 /dist/*
 /.npmrc
+/cypress/sftp-server-logs

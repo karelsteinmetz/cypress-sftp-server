@@ -11,12 +11,14 @@ run(true)
 
 async function run(debug: boolean) {
     const startResult = await sftpStart({
+        port: 22,
         hostKeys: [
             {
                 keyPath: path.resolve(__dirname, "plugin/dist/privateKey.ppk"),
                 passphrase: "test",
             },
         ],
+        serverLogDirPath: "",
         debug,
     });
 
