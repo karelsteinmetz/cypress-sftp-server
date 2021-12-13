@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.0.5
+
+-   Removed console logging for server logs.
+
 ### 0.0.4
 
 -   Created fs server logger.

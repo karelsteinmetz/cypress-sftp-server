@@ -826,10 +826,10 @@ cross-spawn@^7.0.0, cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-cypress-sftp-client@*:
-  version "0.0.5"
-  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/cypress-sftp-client/-/cypress-sftp-client-0.0.5.tgz#bd6750be3e58513643a395aabd51bd2b9cda6beb"
-  integrity sha1-vWdQvj5YUTZDo5WqvVG9K5zaa+s=
+cypress-sftp-client@^0.0.6:
+  version "0.0.6"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/cypress-sftp-client/-/cypress-sftp-client-0.0.6.tgz#2557208b2b3055677155d6802ec26e49bf72ce5e"
+  integrity sha1-JVcgiyswVWdxVdaALsJuSb9yzl4=
   dependencies:
     "@types/ssh2-sftp-client" "^7.0.0"
     cypress "^7.2.0 || ^8.0.1"

@@ -24,7 +24,6 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
             server = new ssh2.Server(
                 {
                     debug: (message: string) => {
-                        debugLog(config, message);
                         serverLogger?.log(message);
                     },
                     hostKeys: config.hostKeys
