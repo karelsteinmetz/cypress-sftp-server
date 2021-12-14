@@ -28,7 +28,7 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
                     },
                     hostKeys: config.hostKeys
                         ? config.hostKeys.map((k) => {
-                              debugLog(config, "Server configured with host key", k.keyPath);
+                              debugLog(config, "SFTP Server configured with host key.", k.keyPath);
                               return {
                                   key: fs.readFileSync(k.keyPath),
                                   passphrase: k.passphrase,
@@ -42,32 +42,32 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
                           ],
                 },
                 (client: ssh2.Connection, clientInfo: ssh2.ClientInfo) => {
-                    debugLog(config, `New client connecting...`, clientInfo);
+                    debugLog(config, `New SFTP client connecting...`, clientInfo);
                     client
                         .on("error", (e) => debugLog(config, "error: ", e))
                         .on("authentication", async function (ctx) {
-                            debugLog(config, "Authentication accepting started...");
-                            debugLog(config, `User ${ctx.username} attempting to authenticate with method= ${ctx.method}`);
+                            debugLog(config, "SFTP Authentication accepting started...");
+                            debugLog(config, `SFTP User ${ctx.username} attempting to authenticate with method= ${ctx.method}`);
                             if (ctx.method === "none") {
                                 ctx.accept();
-                                debugLog(config, `Authentication accepted by method ${ctx.method}.`);
+                                debugLog(config, `SFTP Authentication accepted by method ${ctx.method}.`);
                                 return;
                             } else {
                                 ctx.reject(["password"]);
                             }
                             ctx.accept();
-                            debugLog(config, "Authentication accepted.");
+                            debugLog(config, "SFTP Authentication accepted.");
                         })
                         .on("ready", function () {
-                            debugLog(config, "Client is authenticated!");
+                            debugLog(config, "SFTP Client is authenticated!");
                             client.on("session", (accept) => {
-                                debugLog(config, "Session accepting started...");
+                                debugLog(config, "SFTP Session accepting started...");
                                 let session = accept();
-                                debugLog(config, "Session accepted.", session);
+                                debugLog(config, "SFTP Session accepted.", session);
                                 session.on("sftp", function (accept) {
-                                    debugLog(config, "Session stream accepting started...");
+                                    debugLog(config, "SFTP Session stream accepting started...");
                                     const sftpStream = accept();
-                                    debugLog(config, "Session stream accepted.", session);
+                                    debugLog(config, "SFTP Session stream accepted.", session);
                                     if (!sftpStream) {
                                         return;
                                     }
@@ -76,7 +76,7 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
                             });
                         })
                         .on("end", function () {
-                            debugLog(config, "Client was disconnected.");
+                            debugLog(config, "SFTP Client was disconnected.");
                         });
                 }
             );
@@ -86,7 +86,7 @@ export async function sftpStart(config: ISftpStartOptions): Promise<ISftpStartRe
                 family = address.family;
                 port = address.port;
                 host = address.address;
-                debugLog(config, "Listening on: " + host + ":" + port, family);
+                debugLog(config, "SFTP Server listening on: " + host + ":" + port, family);
 
                 f({
                     server: {
