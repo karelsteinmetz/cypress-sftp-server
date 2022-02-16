@@ -1,5 +1,6 @@
 # Changelog
-
+### 0.0.8
+-   Updated cypress@^9.2.0
 ### 0.0.7
 
 ### 0.0.6

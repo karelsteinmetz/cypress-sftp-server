@@ -8,10 +8,7 @@ interface ISftpStartCommandOptionsWithLog extends ISftpStartCommandOptions, ICyp
 
 Cypress.Commands.add(
     "sftpStart",
-    {
-        prevSubject: false,
-    },
-    (options: ISftpStartCommandOptionsWithLog): Cypress.Chainable<ISftpStartResult> => {
+    (options: ISftpStartCommandOptions): Cypress.Chainable<ISftpStartResult> => {
         const cmdOptions: ISftpStartCommandOptionsWithLog = Object.assign(
             typeof options === "object" ? options : ({} as ISftpStartCommandOptionsWithLog),
             {
@@ -42,10 +39,7 @@ interface ISftpStopCommandOptionsWithLog extends ISftpStopCommandOptions, ICypre
 
 Cypress.Commands.add(
     "sftpStop",
-    {
-        prevSubject: false,
-    },
-    (options: ISftpStopCommandOptionsWithLog): Cypress.Chainable<ISftpStopResult> => {
+    (options: ISftpStopCommandOptions): Cypress.Chainable<ISftpStopResult> => {
         const cmdOptions: ISftpStopCommandOptionsWithLog = Object.assign(
             typeof options === "object" ? options : ({} as ISftpStopCommandOptionsWithLog),
             {
