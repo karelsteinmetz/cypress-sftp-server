@@ -23,6 +23,30 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
+"@cypress/request@^2.88.10":
+  version "2.88.10"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/@cypress/request/-/request-2.88.10.tgz#b66d76b07f860d3a4b8d7a0604d020c662752cce"
+  integrity sha1-tm12sH+GDTpLjXoGBNAgxmJ1LM4=
+  dependencies:
+    aws-sign2 "~0.7.0"
+    aws4 "^1.8.0"
+    caseless "~0.12.0"
+    combined-stream "~1.0.6"
+    extend "~3.0.2"
+    forever-agent "~0.6.1"
+    form-data "~2.3.2"
+    http-signature "~1.3.6"
+    is-typedarray "~1.0.0"
+    isstream "~0.1.2"
+    json-stringify-safe "~5.0.1"
+    mime-types "~2.1.19"
+    performance-now "^2.1.0"
+    qs "~6.5.2"
+    safe-buffer "^5.1.2"
+    tough-cookie "~2.5.0"
+    tunnel-agent "^0.6.0"
+    uuid "^8.3.2"
+
 "@cypress/request@^2.88.6":
   version "2.88.6"
   resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/@cypress/request/-/request-2.88.6.tgz#a970dd675befc6bdf8a8921576c01f51cc5798e9"
@@ -119,6 +143,11 @@
   version "14.17.32"
   resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/@types/node/-/node-14.17.32.tgz#2ca61c9ef8c77f6fa1733be9e623ceb0d372ad96"
   integrity sha1-LKYcnvjHf2+hczvp5iPOsNNyrZY=
+
+"@types/sinonjs__fake-timers@8.1.1":
+  version "8.1.1"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/@types/sinonjs__fake-timers/-/sinonjs__fake-timers-8.1.1.tgz#b49c2c70150141a15e0fa7e79cf1f92a72934ce3"
+  integrity sha1-tJwscBUBQaFeD6fnnPH5KnKTTOM=
 
 "@types/sinonjs__fake-timers@^6.0.2":
   version "6.0.4"
@@ -544,6 +573,11 @@ balanced-match@^1.0.0:
   resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha1-6D46fj8wCzTLnYf2FfoMvzV2kO4=
 
+base64-js@^1.3.1:
+  version "1.5.1"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
+  integrity sha1-GxtEAWClv3rUC2UPCVljSBkDkwo=
+
 bcrypt-pbkdf@^1.0.0, bcrypt-pbkdf@^1.0.2:
   version "1.0.2"
   resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.2.tgz#a4301d389b6a43f9b67ff3ca11a3f6637e360e9e"
@@ -601,6 +635,14 @@ buffer-from@^1.0.0:
   version "1.1.2"
   resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/buffer-from/-/buffer-from-1.1.2.tgz#2b146a6fd72e80b4f55d255f35ed59a3a9a41bd5"
   integrity sha1-KxRqb9cugLT1XSVfNe1Zo6mkG9U=
+
+buffer@^5.6.0:
+  version "5.7.1"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/buffer/-/buffer-5.7.1.tgz#ba62e7c13133053582197160851a8f648e99eed0"
+  integrity sha1-umLnwTEzBTWCGXFghRqPZI6Z7tA=
+  dependencies:
+    base64-js "^1.3.1"
+    ieee754 "^1.1.13"
 
 cachedir@^2.3.0:
   version "2.3.0"
@@ -681,6 +723,15 @@ cli-table3@~0.6.0:
   optionalDependencies:
     colors "^1.1.2"
 
+cli-table3@~0.6.1:
+  version "0.6.1"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/cli-table3/-/cli-table3-0.6.1.tgz#36ce9b7af4847f288d3cdd081fbd09bf7bd237b8"
+  integrity sha1-Ns6bevSEfyiNPN0IH70Jv3vSN7g=
+  dependencies:
+    string-width "^4.2.0"
+  optionalDependencies:
+    colors "1.4.0"
+
 cli-truncate@^2.1.0:
   version "2.1.0"
   resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/cli-truncate/-/cli-truncate-2.1.0.tgz#c39e28bf05edcde5be3b98992a22deed5a2b93c7"
@@ -737,7 +788,7 @@ colorette@^2.0.14, colorette@^2.0.16:
   resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/colorette/-/colorette-2.0.16.tgz#713b9af84fdb000139f04546bd4a93f62a5085da"
   integrity sha1-cTua+E/bAAE58EVGvUqT9ipQhdo=
 
-colors@^1.1.2:
+colors@1.4.0, colors@^1.1.2:
   version "1.4.0"
   resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/colors/-/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
   integrity sha1-xQSRR51MG9rtLJztMs98fcI2D3g=
@@ -826,10 +877,10 @@ cross-spawn@^7.0.0, cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-cypress-sftp-client@^0.0.6:
-  version "0.0.6"
-  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/cypress-sftp-client/-/cypress-sftp-client-0.0.6.tgz#2557208b2b3055677155d6802ec26e49bf72ce5e"
-  integrity sha1-JVcgiyswVWdxVdaALsJuSb9yzl4=
+cypress-sftp-client@*:
+  version "0.1.1"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/cypress-sftp-client/-/cypress-sftp-client-0.1.1.tgz#141e324f87fb8623cb2f1a5ebc4fc88558b19172"
+  integrity sha1-FB4yT4f7hiPLLxpevE/IhVixkXI=
   dependencies:
     "@types/ssh2-sftp-client" "^7.0.0"
     cypress "^7.2.0 || ^8.0.1"
@@ -881,6 +932,54 @@ cypress-sftp-client@^0.0.6:
     tmp "~0.2.1"
     untildify "^4.0.0"
     url "^0.11.0"
+    yauzl "^2.10.0"
+
+cypress@^9.2.0:
+  version "9.4.1"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/cypress/-/cypress-9.4.1.tgz#1a4ba706435829c24b7edf350c2b059e05da9084"
+  integrity sha1-GkunBkNYKcJLft81DCsFngXakIQ=
+  dependencies:
+    "@cypress/request" "^2.88.10"
+    "@cypress/xvfb" "^1.2.4"
+    "@types/node" "^14.14.31"
+    "@types/sinonjs__fake-timers" "8.1.1"
+    "@types/sizzle" "^2.3.2"
+    arch "^2.2.0"
+    blob-util "^2.0.2"
+    bluebird "^3.7.2"
+    buffer "^5.6.0"
+    cachedir "^2.3.0"
+    chalk "^4.1.0"
+    check-more-types "^2.24.0"
+    cli-cursor "^3.1.0"
+    cli-table3 "~0.6.1"
+    commander "^5.1.0"
+    common-tags "^1.8.0"
+    dayjs "^1.10.4"
+    debug "^4.3.2"
+    enquirer "^2.3.6"
+    eventemitter2 "^6.4.3"
+    execa "4.1.0"
+    executable "^4.1.1"
+    extract-zip "2.0.1"
+    figures "^3.2.0"
+    fs-extra "^9.1.0"
+    getos "^3.2.1"
+    is-ci "^3.0.0"
+    is-installed-globally "~0.4.0"
+    lazy-ass "^1.6.0"
+    listr2 "^3.8.3"
+    lodash "^4.17.21"
+    log-symbols "^4.0.0"
+    minimist "^1.2.5"
+    ospath "^1.2.2"
+    pretty-bytes "^5.6.0"
+    proxy-from-env "1.0.0"
+    request-progress "^3.0.0"
+    semver "^7.3.2"
+    supports-color "^8.1.1"
+    tmp "~0.2.1"
+    untildify "^4.0.0"
     yauzl "^2.10.0"
 
 dashdash@^1.12.0:
@@ -1439,6 +1538,15 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
+http-signature@~1.3.6:
+  version "1.3.6"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/http-signature/-/http-signature-1.3.6.tgz#cb6fbfdf86d1c974f343be94e87f7fc128662cf9"
+  integrity sha1-y2+/34bRyXTzQ76U6H9/wShmLPk=
+  dependencies:
+    assert-plus "^1.0.0"
+    jsprim "^2.0.2"
+    sshpk "^1.14.1"
+
 human-signals@^1.1.1:
   version "1.1.1"
   resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
@@ -1455,6 +1563,11 @@ iconv-lite@^0.4.24:
   integrity sha1-ICK0sl+93CHS9SSXSkdKr+czkIs=
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
+
+ieee754@^1.1.13:
+  version "1.2.1"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
+  integrity sha1-jrehCmP/8l0VpXsAFYbRd9Gw01I=
 
 ignore@^4.0.6:
   version "4.0.6"
@@ -1667,6 +1780,11 @@ json-schema@0.2.3:
   resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/json-schema/-/json-schema-0.2.3.tgz#9caadeea0295e5ba2d6a4184d99ae9eb7b0b55c2"
   integrity sha1-nKre6gKV5botakGE2Zrp63sLVcI=
 
+json-schema@0.4.0:
+  version "0.4.0"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/json-schema/-/json-schema-0.4.0.tgz#f7de4cf6efab838ebaeb3236474cbba5a1930ab5"
+  integrity sha1-995M9u+rg4666zI2R0y7paGTCrU=
+
 json-stable-stringify-without-jsonify@^1.0.1:
   version "1.0.1"
   resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
@@ -1701,6 +1819,16 @@ jsprim@^1.2.2:
     assert-plus "1.0.0"
     extsprintf "1.3.0"
     json-schema "0.2.3"
+    verror "1.10.0"
+
+jsprim@^2.0.2:
+  version "2.0.2"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/jsprim/-/jsprim-2.0.2.tgz#77ca23dbcd4135cd364800d22ff82c2185803d4d"
+  integrity sha1-d8oj281BNc02SADSL/gsIYWAPU0=
+  dependencies:
+    assert-plus "1.0.0"
+    extsprintf "1.3.0"
+    json-schema "0.4.0"
     verror "1.10.0"
 
 kind-of@^6.0.2:
@@ -2414,6 +2542,21 @@ ssh2@^1.5.0:
   optionalDependencies:
     cpu-features "0.0.2"
     nan "^2.15.0"
+
+sshpk@^1.14.1:
+  version "1.17.0"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/sshpk/-/sshpk-1.17.0.tgz#578082d92d4fe612b13007496e543fa0fbcbe4c5"
+  integrity sha1-V4CC2S1P5hKxMAdJblQ/oPvL5MU=
+  dependencies:
+    asn1 "~0.2.3"
+    assert-plus "^1.0.0"
+    bcrypt-pbkdf "^1.0.0"
+    dashdash "^1.12.0"
+    ecc-jsbn "~0.1.1"
+    getpass "^0.1.1"
+    jsbn "~0.1.0"
+    safer-buffer "^2.0.2"
+    tweetnacl "~0.14.0"
 
 sshpk@^1.7.0:
   version "1.16.1"
