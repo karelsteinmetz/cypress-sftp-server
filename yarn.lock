@@ -2524,10 +2524,10 @@ ssh2-sftp-client@^7.1.0:
     promise-retry "^2.0.1"
     ssh2 "^1.5.0"
 
-ssh2-sftp-server@1.1.0-dev.3:
-  version "1.1.0-dev.3"
-  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/ssh2-sftp-server/-/ssh2-sftp-server-1.1.0-dev.3.tgz#9fee556b57832e47ec3bf012c85e9fee70a44cfe"
-  integrity sha1-n+5Va1eDLkfsO/ASyF6f7nCkTP4=
+ssh2-sftp-server@1.1.0-dev.4:
+  version "1.1.0-dev.4"
+  resolved "https://pkgs.dev.azure.com/storeit/_packaging/bobwai-npm/npm/registry/ssh2-sftp-server/-/ssh2-sftp-server-1.1.0-dev.4.tgz#f48bfd9120a4c4c9c93e992bca41456aa28e3c23"
+  integrity sha1-9Iv9kSCkxMnJPpkrykFFaqKOPCM=
   dependencies:
     debug "^4.1.1"
     mout "^1.1.0"
