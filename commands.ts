@@ -31,7 +31,7 @@ Cypress.Commands.add(
             )
             .then((result) => (result as any) as ISftpStartResult)
             .then((report) => sftpServerResultLog(cmdOptions, report))
-            .should((report) => expect(report.status, `it failed because ${report.error}`).to.be.true);
+            .should((report) => expect(report.status, `Report status assertion. Report object is: ${JSON.stringify(report)}`).to.be.true);
     }
 );
 
@@ -57,7 +57,7 @@ Cypress.Commands.add(
             )
             .then((result) => (result as any) as ISftpStopResult)
             .then((report) => sftpServerResultLog(cmdOptions, report))
-            .should((report) => expect(report.status, `it failed because ${report.error}`).to.be.true);
+            .should((report) => expect(report.status, `Report status assertion. Report object is: ${JSON.stringify(report)}`).to.be.true);
     }
 );
 
